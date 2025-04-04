@@ -150,15 +150,12 @@ jdm-doctor-dashboard/
 
 ## Diagrams
 
-The project includes several UML diagrams in the `Diagrams` directory:
+The project includes several diagrams in the `diagrams` directory:
 - Class Diagram: Shows the structure and relationships of Java classes
 - ERD (Entity-Relationship Diagram): Illustrates the database schema
 - Use Case Diagram: Describes the system's functionality from a user perspective
 
-To generate or modify these diagrams:
-1. Install PlantUML: `sudo apt-get install plantuml graphviz`
-2. Edit the .puml files in the `Diagrams` directory
-3. Run `plantuml Diagrams/*.puml` to generate the diagrams
+Source code for these files was preserved locally as *.puml files for later editing/additions.
 
 ## Application Components
 
