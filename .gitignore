@@ -63,6 +63,9 @@ out/
 /.nb-gradle/
 build/
 
+# UML diagram raw data files
+*.puml
+
 # Application specific
 exports/
 # Ignore all CSV files except those in the data folder

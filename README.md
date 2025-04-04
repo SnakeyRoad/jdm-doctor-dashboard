@@ -130,20 +130,35 @@ The application follows the Model-View-Controller (MVC) architecture:
 
 ```
 jdm-doctor-dashboard/
-├── clean_csv_files.py      # Data cleaning script
+├── clean_csv_files.py       # Data cleaning script
 ├── src/
 │   ├── main/
 │   │   ├── java/com/jdm/
-│   │   │   ├── models/     # Data objects
-│   │   │   ├── dao/        # Data Access Objects
-│   │   │   ├── controllers/# Business logic
-│   │   │   ├── ui/         # User interface components
-│   │   │   ├── utils/      # Utility classes
-│   │   │   └── App.java    # Main entry point
+│   │   │   ├── models/      # Data objects
+│   │   │   ├── dao/         # Data Access Objects
+│   │   │   ├── controllers/ # Business logic
+│   │   │   ├── ui/          # User interface components
+│   │   │   ├── utils/       # Utility classes
+│   │   │   └── App.java     # Main entry point
 │   │   └── resources/
-│   └── test/               # Unit tests
-└── data/                   # Cleaned CSV data files
+│   └── test/                # Unit tests
+├── data/                    # Cleaned CSV data files
+├── images/                  # Screenshots and images
+├── diagrams/                # UML and other diagrams
+└── pom.xml                  # Maven configuration
 ```
+
+## Diagrams
+
+The project includes several UML diagrams in the `Diagrams` directory:
+- Class Diagram: Shows the structure and relationships of Java classes
+- ERD (Entity-Relationship Diagram): Illustrates the database schema
+- Use Case Diagram: Describes the system's functionality from a user perspective
+
+To generate or modify these diagrams:
+1. Install PlantUML: `sudo apt-get install plantuml graphviz`
+2. Edit the .puml files in the `Diagrams` directory
+3. Run `plantuml Diagrams/*.puml` to generate the diagrams
 
 ## Application Components
 
