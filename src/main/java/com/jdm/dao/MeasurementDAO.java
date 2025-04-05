@@ -16,7 +16,17 @@ import java.util.Map;
  * Data Access Object for Measurement
  */
 public class MeasurementDAO {
-    private final DatabaseManager dbManager = DatabaseManager.getInstance();
+
+    private final DatabaseManager dbManager;
+    
+    public MeasurementDAO() {
+        this.dbManager = DatabaseManager.getInstance();
+    }
+    
+    // Package-private constructor for testing
+    MeasurementDAO(DatabaseManager dbManager) {
+        this.dbManager = dbManager;
+    }
     
     /**
      * Get all measurements for a lab result

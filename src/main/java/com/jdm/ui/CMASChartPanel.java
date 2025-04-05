@@ -3,18 +3,15 @@ package com.jdm.ui;
 import com.jdm.controllers.CMASController;
 import com.jdm.models.CMAS;
 import com.jdm.models.Patient;
-import com.jdm.utils.DateUtils;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
-import org.jfree.data.xy.XYDataset;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -23,7 +20,6 @@ import java.awt.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

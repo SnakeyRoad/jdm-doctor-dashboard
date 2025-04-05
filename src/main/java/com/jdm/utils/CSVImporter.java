@@ -112,7 +112,7 @@ public class CSVImporter {
      */
     private void importPatients(String patientFile, Connection conn) throws IOException, SQLException {
         try (Reader reader = new FileReader(patientFile);
-             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.builder().setHeader().setSkipHeaderRecord(true).build())) {
             
             List<Patient> patients = new ArrayList<>();
             for (CSVRecord record : csvParser) {
@@ -137,7 +137,7 @@ public class CSVImporter {
      */
     private void importCMAS(String cmasFile, Connection conn) throws IOException, SQLException {
         try (Reader reader = new FileReader(cmasFile);
-             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.builder().setHeader().setSkipHeaderRecord(true).build())) {
             
             List<CMAS> cmasEntries = new ArrayList<>();
             for (CSVRecord record : csvParser) {
@@ -171,7 +171,7 @@ public class CSVImporter {
      */
     private void importLabResultGroups(String labResultGroupFile, Connection conn) throws IOException, SQLException {
         try (Reader reader = new FileReader(labResultGroupFile);
-             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.builder().setHeader().setSkipHeaderRecord(true).build())) {
             
             List<LabResultGroup> groups = new ArrayList<>();
             for (CSVRecord record : csvParser) {
@@ -207,7 +207,7 @@ public class CSVImporter {
         // First, load the English names for later reference
         Map<String, String> englishNames = new HashMap<>();
         try (Reader reader = new FileReader(labResultsENFile);
-             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.builder().setHeader().setSkipHeaderRecord(true).build())) {
             
             for (CSVRecord record : csvParser) {
                 String labResultId = record.get("LabResultID");
@@ -218,7 +218,7 @@ public class CSVImporter {
         
         // Now import the main lab results
         try (Reader reader = new FileReader(labResultFile);
-             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.builder().setHeader().setSkipHeaderRecord(true).build())) {
             
             List<LabResult> labResults = new ArrayList<>();
             for (CSVRecord record : csvParser) {
@@ -249,7 +249,7 @@ public class CSVImporter {
      */
     private void importMeasurements(String measurementFile, Connection conn) throws IOException, SQLException {
         try (Reader reader = new FileReader(measurementFile);
-             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.builder().setHeader().setSkipHeaderRecord(true).build())) {
             
             List<Measurement> measurements = new ArrayList<>();
             for (CSVRecord record : csvParser) {

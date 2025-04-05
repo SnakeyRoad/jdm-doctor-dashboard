@@ -1,0 +1,49 @@
+MIT License
+
+Copyright (c) 2025 The Snakey Road
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Additional Healthcare-Specific Terms:
+
+1. Data Privacy and Security:
+   - Users must comply with all applicable healthcare data protection laws
+   - Patient data must be handled according to HIPAA or equivalent regulations
+   - No patient data should be stored or transmitted without proper encryption
+
+2. Medical Disclaimer:
+   - This software is for informational purposes only
+   - Not intended as medical advice or diagnosis
+   - Users should consult healthcare professionals for medical decisions
+
+3. Compliance Requirements:
+   - Users must maintain audit logs of data access
+   - Implement proper access controls
+   - Follow data retention policies
+   - Report any data breaches immediately
+
+4. Usage Restrictions:
+   - Not for use in life-critical systems
+   - Requires proper medical supervision
+   - Must be used in compliance with local healthcare regulations
+
+5. Support and Updates:
+   - No guarantee of medical accuracy
+   - Regular security updates required
+   - Users responsible for maintaining compliance 

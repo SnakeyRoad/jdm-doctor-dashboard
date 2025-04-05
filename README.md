@@ -221,16 +221,106 @@ Source code for these files was preserved locally as *.puml files for later edit
 - **Charting**: JFreeChart for data visualization
 - **Build Tool**: Maven
 - **Data Cleaning**: Custom Python script for data preparation
+- **Testing**: JUnit 5 and Mockito for comprehensive test coverage
 
-## Future Enhancements
+## Testing Infrastructure
 
-1. User authentication and role-based access
-2. Support for multiple patients
-3. Integration with electronic health record systems
-4. Advanced analytics using machine learning
-5. Mobile companion app for patients to track exercises and symptoms
-6. Real-time alerts for concerning measurement trends
-7. Integration with biomarker analysis tools
+The project includes comprehensive unit tests for all major components:
+
+1. **DAO Tests**:
+   - `CMASDAOTest.java`: Tests for CMAS data operations
+   - `MeasurementDAOTest.java`: Tests for measurement operations
+   - Tests cover all CRUD operations and data validation
+
+2. **Utility Tests**:
+   - `CSVImporterTest.java`: Tests for data import functionality
+   - Tests verify correct data parsing and database population
+
+3. **Test Features**:
+   - Mock database connections for isolated testing
+   - Data validation for all operations
+   - Error handling verification
+   - Performance testing for large datasets
+
+Tests are automatically run during the build process using Maven Surefire plugin.
+
+## Database Management
+
+The application uses SQLite for data storage with the following features:
+
+1. **Automatic Database Creation**:
+   - Database is created on first run if not present
+   - Schema is automatically initialized
+   - Data is imported from CSV files
+
+2. **Data Import Process**:
+   - Imports patient data
+   - Imports CMAS measurements
+   - Imports lab results and groups
+   - Imports measurements
+
+3. **Database Location**:
+   - Database file: `jdm_dashboard.db`
+   - Created in the project root directory
+   - Automatically regenerated if missing
+
+## Development Setup
+
+1. **Prerequisites**:
+   - Java 11 or higher
+   - Maven
+   - Python 3.6+ (for data cleaning)
+   - Git
+
+2. **Development Environment**:
+   - Clone the repository
+   - Import as Maven project in your IDE
+   - Run `mvn clean install` to build
+   - Database will be created on first run
+
+3. **Running Tests**:
+   - `mvn test` - Run all tests
+   - `mvn test -Dtest=CMASDAOTest` - Run specific test class
+   - `mvn test -Dtest=CMASDAOTest#getAllForPatient_ShouldReturnCMASList` - Run specific test method
+
+## Troubleshooting
+
+1. **Database Issues**:
+   - Delete `jdm_dashboard.db` to force regeneration
+   - Check CSV files in `data/` directory
+   - Verify database permissions
+
+2. **Build Issues**:
+   - Clean Maven cache: `mvn clean`
+   - Update dependencies: `mvn dependency:purge-local-repository`
+   - Check Java version: `java -version`
+
+3. **Runtime Issues**:
+   - Check log files for errors
+   - Verify CSV file formats
+   - Ensure sufficient disk space
+
+## License
+
+This project is licensed under the MIT License with additional healthcare-specific terms - see the [LICENSE](LICENSE) file for details. The license includes special provisions for:
+- Healthcare data privacy and security
+- Medical disclaimers
+- Compliance requirements
+- Usage restrictions
+- Support and updates
+
+## Changelog
+
+### v2.0 (Current)
+- Added comprehensive test coverage
+- Updated deprecated CSV methods
+- Improved documentation
+- Enhanced error handling
+
+### v1.0 (Initial Release)
+- Basic dashboard functionality
+- CMAS and lab result visualization
+- Data export capabilities
 
 ## Contributing
 
@@ -240,11 +330,9 @@ Source code for these files was preserved locally as *.puml files for later edit
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-None as of yet. Copyright by The Snakey Road 2025
 ## Acknowledgments
 
 - This project was created as part of a software engineering course
 - Special thanks to the JFreeChart team for their excellent charting library
+
 

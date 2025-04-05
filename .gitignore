@@ -63,6 +63,29 @@ out/
 /.nb-gradle/
 build/
 
+# IDE - Cursor
+.cursor/
+.cursor-rules/
+
+# Virtual environment
+venv/
+env/
+ENV/
+virtualenv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Rules file
+*.json
+
 # UML diagram raw data files
 *.puml
 
@@ -71,6 +94,11 @@ exports/
 # Ignore all CSV files except those in the data folder
 *.csv
 !data/*.csv
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
 
 # OS specific
 .DS_Store

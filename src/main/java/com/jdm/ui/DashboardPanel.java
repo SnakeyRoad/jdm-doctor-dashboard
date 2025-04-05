@@ -1,7 +1,6 @@
 package com.jdm.ui;
 
 import com.jdm.controllers.CMASController;
-import com.jdm.controllers.DashboardController;
 import com.jdm.controllers.LabResultController;
 import com.jdm.controllers.PatientController;
 import com.jdm.models.Patient;
@@ -16,7 +15,6 @@ import java.sql.SQLException;
  */
 public class DashboardPanel extends JPanel {
     
-    private final DashboardController dashboardController;
     private final PatientController patientController;
     private final CMASController cmasController;
     private final LabResultController labResultController;
@@ -32,7 +30,6 @@ public class DashboardPanel extends JPanel {
      */
     public DashboardPanel() {
         // Initialize controllers
-        this.dashboardController = new DashboardController();
         this.patientController = new PatientController();
         this.cmasController = new CMASController();
         this.labResultController = new LabResultController();

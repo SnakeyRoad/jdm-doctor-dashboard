@@ -5,7 +5,6 @@ import com.jdm.models.LabResult;
 import com.jdm.models.LabResultGroup;
 import com.jdm.models.Measurement;
 import com.jdm.models.Patient;
-import com.jdm.utils.DateUtils;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -22,7 +21,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.sql.SQLException;
 import java.time.LocalDateTime;

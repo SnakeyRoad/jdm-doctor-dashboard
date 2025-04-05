@@ -34,7 +34,8 @@ public class ExportUtils {
         String[] headers = {"Date", "Category", "Value"};
         
         try (FileWriter fileWriter = new FileWriter(filePath.toFile());
-             CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(headers))) {
+             CSVPrinter csvPrinter = new CSVPrinter(fileWriter, 
+                 CSVFormat.DEFAULT.builder().setHeader(headers).build())) {
             
             for (CMAS cmas : cmasEntries) {
                 csvPrinter.printRecord(
@@ -62,7 +63,8 @@ public class ExportUtils {
         String[] headers = {"Result Name", "Group", "Date", "Value", "Unit"};
         
         try (FileWriter fileWriter = new FileWriter(filePath.toFile());
-             CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(headers))) {
+             CSVPrinter csvPrinter = new CSVPrinter(fileWriter, 
+                 CSVFormat.DEFAULT.builder().setHeader(headers).build())) {
             
             for (LabResult labResult : labResults) {
                 String resultName = labResult.getDisplayName();
