@@ -87,6 +87,7 @@ public class LabResultPanel extends JPanel {
         resultPanel = new JPanel(new BorderLayout());
         resultPanel.setBorder(new TitledBorder("Result Details"));
         resultPanel.setPreferredSize(new Dimension(250, 0));
+        resultPanel.setMinimumSize(new Dimension(200, 0)); // Add minimum size
         add(resultPanel, BorderLayout.EAST);
     }
     
@@ -147,6 +148,9 @@ public class LabResultPanel extends JPanel {
                 }
             }
         });
+        
+        // Set minimum row height for better readability
+        resultTable.setRowHeight(resultTable.getRowHeight() + 4);
         
         // Add table to scroll pane
         JScrollPane scrollPane = new JScrollPane(resultTable);
@@ -233,7 +237,9 @@ public class LabResultPanel extends JPanel {
                 String latestValue = "";
                 String latestDate = "";
                 if (!measurements.isEmpty()) {
-                    Measurement latest = measurements.get(measurements.size() - 1);
+                    // Sort measurements by date (most recent first)
+                    measurements.sort(Comparator.comparing(Measurement::getDateTime).reversed());
+                    Measurement latest = measurements.get(0);
                     latestValue = latest.getValue();
                     latestDate = latest.getDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
                 }
@@ -415,6 +421,8 @@ public class LabResultPanel extends JPanel {
         nameValue.setOpaque(false);
         nameValue.setEditable(false);
         nameValue.setBorder(null);
+        // Set fixed width to prevent text flowing out of panel
+        nameValue.setPreferredSize(new Dimension(220, nameValue.getPreferredSize().height));
         namePanel.add(nameValue, BorderLayout.CENTER);
         basicDetailsPanel.add(namePanel);
         basicDetailsPanel.add(Box.createVerticalStrut(5));
@@ -432,6 +440,8 @@ public class LabResultPanel extends JPanel {
         groupValue.setOpaque(false);
         groupValue.setEditable(false);
         groupValue.setBorder(null);
+        // Set fixed width to prevent text flowing out of panel
+        groupValue.setPreferredSize(new Dimension(220, groupValue.getPreferredSize().height));
         groupPanel.add(groupValue, BorderLayout.CENTER);
         basicDetailsPanel.add(groupPanel);
         basicDetailsPanel.add(Box.createVerticalStrut(5));
@@ -453,8 +463,8 @@ public class LabResultPanel extends JPanel {
         // Add measurement statistics if available
         if (!measurements.isEmpty()) {
             // Sort measurements by date
-            measurements.sort(Comparator.comparing(Measurement::getDateTime));
-            Measurement latest = measurements.get(measurements.size() - 1);
+            measurements.sort(Comparator.comparing(Measurement::getDateTime).reversed());
+            Measurement latest = measurements.get(0);
             
             // Create measurement stats panel
             JPanel statsPanel = new JPanel();
@@ -473,6 +483,8 @@ public class LabResultPanel extends JPanel {
             latestValue.setOpaque(false);
             latestValue.setEditable(false);
             latestValue.setBorder(null);
+            // Set fixed width to prevent text flowing out of panel
+            latestValue.setPreferredSize(new Dimension(220, latestValue.getPreferredSize().height));
             latestValuePanel.add(latestValue, BorderLayout.CENTER);
             statsPanel.add(latestValuePanel);
             statsPanel.add(Box.createVerticalStrut(5));
@@ -515,10 +527,11 @@ public class LabResultPanel extends JPanel {
             };
             
             // Add measurements to table (most recent first)
-            for (int i = measurements.size() - 1; i >= 0; i--) {
+            for (int i = 0; i < measurements.size(); i++) {
                 Measurement m = measurements.get(i);
                 historyModel.addRow(new Object[]{
-                    m.getDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                    // Use shorter date format to fit in column width
+                    m.getDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yy")),
                     m.getValue()
                 });
             }
@@ -528,10 +541,16 @@ public class LabResultPanel extends JPanel {
             historyTable.setShowGrid(true);
             historyTable.setGridColor(Color.LIGHT_GRAY);
             
-            // Set fixed column widths
-            historyTable.getColumnModel().getColumn(0).setPreferredWidth(80);
-            historyTable.getColumnModel().getColumn(0).setMaxWidth(80);
+            // Increase row height for better readability
+            historyTable.setRowHeight(historyTable.getRowHeight() + 4);
+            
+            // Set fixed column widths with adequate space for Windows rendering
+            historyTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+            historyTable.getColumnModel().getColumn(0).setMinWidth(100);
+            historyTable.getColumnModel().getColumn(0).setMaxWidth(120);
+            
             historyTable.getColumnModel().getColumn(1).setPreferredWidth(120);
+            historyTable.getColumnModel().getColumn(1).setMinWidth(80);
             
             // Enable cell text wrapping
             historyTable.setDefaultRenderer(Object.class, new TableCellRenderer() {
@@ -542,6 +561,10 @@ public class LabResultPanel extends JPanel {
                     area.setWrapStyleWord(true);
                     area.setLineWrap(true);
                     area.setOpaque(true);
+                    
+                    // Set padding
+                    area.setBorder(BorderFactory.createEmptyBorder(2, 5, 2, 5));
+                    
                     if (isSelected) {
                         area.setBackground(table.getSelectionBackground());
                         area.setForeground(table.getSelectionForeground());
@@ -554,7 +577,7 @@ public class LabResultPanel extends JPanel {
             });
             
             JScrollPane scrollPane = new JScrollPane(historyTable);
-            scrollPane.setPreferredSize(new Dimension(200, 150));
+            scrollPane.setPreferredSize(new Dimension(230, 150));
             
             gbc.gridy = 3;
             gbc.weighty = 1.0;

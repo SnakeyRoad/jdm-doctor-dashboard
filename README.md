@@ -244,6 +244,10 @@ The project includes comprehensive unit tests for all major components:
 
 Tests are automatically run during the build process using Maven Surefire plugin.
 
+During testing on other machines it was discovered the lab result values would go out of bound when the dashboard ran on Windows.
+This was resolved in two ways, one, by editing the code so it would override system specific themes (light/dark).
+And second, by changing the code so it would force the columns to be of a certain width, bypassing Windows rendering issues completely.
+
 ## Database Management
 
 The application uses SQLite for data storage with the following features:
